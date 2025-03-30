@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rishikesh R | Portfolio</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap');
+
+        /* Light Theme Variables */
+        :root {
+            --mainTextColor-light: #222;
+            --secondaryTextColor-light: #444;
+            --mainLinkColor-light: #007bff;
+            --mainBorderColor-light: #ccc;
+            --mainBgColor-light: #f8f9fa;
+            --cardBg-light: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --mainTextColor: #fff;
+            --secondaryTextColor: #adb0b1;
+            --mainLinkColor: #1ebed6;
+            --mainBorderColor: #2b3031;
+            --mainBgColor: #131415;
+            --cardBg: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Apply Light Theme Styles */
+        [data-theme="light"] {
+            --mainTextColor: var(--mainTextColor-light);
+            --secondaryTextColor: var(--secondaryTextColor-light);
+            --mainLinkColor: var(--mainLinkColor-light);
+            --mainBorderColor: var(--mainBorderColor-light);
+            --mainBgColor: var(--mainBgColor-light);
+            --cardBg: var(--cardBg-light);
+            --shadow: var(--shadow-light);
+        }
+
+        /* General Styles */
+        * {
+            font-family: 'Readex Pro', sans-serif;
+            line-height: 1.5em;
+            box-sizing: border-box;
+            color: var(--mainTextColor);
+        }
+
+        body {
+            background-color: var(--mainBgColor);
+            transition: background 0.3s, color 0.3s;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Typography */
+        p, span, li {
+            color: var(--secondaryTextColor);
+            font-size: 1em;
+        }
+
+        h1, h2, h3 {
+            margin: 0.5em 0;
+        }
+
+        /* Links */
+        a {
+            text-decoration: none;
+            color: var(--mainLinkColor);
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* Layout */
+        #container--main {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1em;
+        }
+
+        /* Section Styling */
+        .section--page {
+            padding: 1.5em 0;
+            border-bottom: 1px solid var(--mainBorderColor);
+        }
+
+        /* Profile */
+        #wrapper--hero {
+            display: flex;
+            align-items: center;
+            gap: 2em;
+            padding-bottom: 1em;
+        }
+
+        #profile-pic {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--mainLinkColor);
+        }
+
+        #user-name {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        #email {
+            margin-top: 1em;
+        }
+
+        /* Social Links */
+        #socials--list {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 1em 0;
+        }
+
+        #socials--list a {
+            font-weight: 400;
+            color: var(--secondaryTextColor);
+            font-size: 0.9em;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        #socials--list a:hover {
+            background: var(--mainLinkColor);
+            color: white;
+        }
+
+        /* Tech Stack */
+        #wrapper--techstack__items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 1em 0;
+        }
+
+        .card--techstack {
+            background: var(--cardBg);
+            box-shadow: 0 4px 8px var(--shadow);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Project Showcase */
+        .project-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .project-slide {
+            background: var(--cardBg);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 4px 8px var(--shadow);
+            width: 100%;
+            max-width: 600px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .project-slide:hover {
+            transform: scale(1.02);
+        }
+
+        .project-title {
+            color: var(--mainLinkColor);
+            margin-bottom: 10px;
+        }
+
+        .project-features {
+            margin-left: 20px;
+        }
+
+        .project-features li {
+            margin-bottom: 5px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background: var(--mainLinkColor);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        /* Skills & Qualifications */
+        .skills-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            background: var(--cardBg);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px var(--shadow);
+        }
+
+        /* Education */
+        .education-card {
+            background: var(--cardBg);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 5px solid var(--mainLinkColor);
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .education-card h3 {
+            margin: 0;
+            color: var(--mainLinkColor);
+        }
+
+        /* Contact */
+        .contact-info {
+            background: var(--cardBg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        /* Theme Switcher */
+        #theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .theme {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid var(--mainBorderColor);
+        }
+
+        #theme-light {
+            background: #f8f9fa;
+        }
+
+        #theme-dark {
+            background: #131415;
+        }
+
+        /* Copyright */
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--secondaryTextColor);
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 600px) {
+            .section--page {
+                padding: 1em 0;
+            }
+
+            #wrapper--hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 1em;
+            }
+
+            #profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+
+            .project-slide {
+                max-width: 100%;
+            }
+            
+            #theme-switcher {
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container--main">
+        <section id="wrapper--hero" class="section--page">
+            <img id="profile-pic" src="rishikesh.jpg" alt="Rishikesh R">
+
+            <div>
+                <h1 id="user-name">Rishikesh R</h1>  
+                <p id="bio">Aspiring Network Engineer | BSc Computer Technology, <a href="https://www.kgcas.com/" target="_blank">KGCAS</a></p>  
+                <p id="bio">Passionate about Networking and Security | Creating Secure Infrastructure | Continuous Learner</p>  
+                <p id="email">👉 2326ka30@kgcas.com</p>
+            </div>  
+        </section>
+
+        <section class="section--page">
+            <div id="socials--list">
+                <a href="https://github.com/Rishikesh-14" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/rishi-kesh-699b92285" target="_blank">LinkedIn</a>
+            </div>
+        </section>
+
+        <section class="section--page">
+            <h2>Resume</h2>
+            <a href="./rishi_resume.pdf" download="rishi_resume.pdf" class="btn">📄 Download Resume</a>
+        </section>
+
+        <section class="section--page">
+            <h2>Skills & Qualifications</h2>
+            <ul class="skills-list">
+                <li>✔️ 2 Years experience with network configuration and troubleshooting</li>
+                <li>✔️ Strong understanding of networking protocols and security</li>
+                <li>✔️ Proficient in network monitoring and diagnostic tools</li>
+                <li>✔️ Experience with router and switch configuration</li>
+            </ul>
+        </section>
+
+        <section class="section--page">
+            <h2>Technical Skills</h2>
+            <div id="wrapper--techstack__items">
+                <div class="card--techstack"><span>CCNA, Network Security</span></div>
+                <div class="card--techstack"><span>TCP/IP, DNS, DHCP</span></div>
+                <div class="card--techstack"><span>Router & Switch Configuration</span></div>
+                <div class="card--techstack"><span>Firewall Management</span></div>
+                <div class="card--techstack"><span>Wireshark, Packet Tracer</span></div>
+                <div class="card--techstack"><span>Linux Networking</span></div>
+                <div class="card--techstack"><span>C, C++ Programming</span></div>
+            </div>
+        </section>
+
+        <section class="section--page">
+            <h2>Education</h2>
+            <div class="education-card">
+                <h3>🎓 BSc Computer Technology | KG College of Arts and Science</h3>
+                <p>2023 - Present | Coimbatore, India</p>
+                <p>Courses: Networking Fundamentals, Network Security, Operating Systems</p>
+            </div>
+            <div class="education-card">
+                <h3>🏫 Higher Secondary Education | Kongu Vellalar Matric Higher Secondary School</h3>
+                <p>2021 - 2023 | Coimbatore, India</p>
+                <p>Percentage: 89%</p>
+            </div>
+        </section>
+
+        <section class="section--page">
+            <h2>Projects</h2>
+            <div class="project-showcase">
+                <div class="project-slide">
+                    <h3 class="project-title">🌐 Network Monitoring Tool (Python)</h3>
+                    <p>A Python-based network monitoring solution that checks device availability, latency, and port status.</p>
+                    
+                    <h4>Features:</h4>
+                    <ul class="project-features">
+                        <li>Ping monitoring to check host availability</li>
+                        <li>Port scanning to verify open ports</li>
+                        <li>Latency measurement in milliseconds</li>
+                        <li>Continuous monitoring at regular intervals</li>
+                        <li>Multi-device support for monitoring multiple hosts</li>
+                        <li>No external dependencies - uses standard Python libraries</li>
+                    </ul>
+                    
+                    <a href="networkmonitoringtool.py" download="networkmonitoringtool.py" class="btn">⬇️ Download Python Source Code</a>
+                </div>
+        
+                <div class="project-slide">
+                    <h3 class="project-title">💬 Peer-to-Peer Chat Application (Java)</h3>
+                    <p>A decentralized chat application where each instance acts as both client and server.</p>
+                    
+                    <h4>Features:</h4>
+                    <ul class="project-features">
+                        <li>True peer-to-peer communication (no central server)</li>
+                        <li>UDP protocol for simple message transmission</li>
+                        <li>Automatic partner detection on first message</li>
+                        <li>Basic exit command to terminate session</li>
+                        <li>Multithreaded design for simultaneous sending/receiving</li>
+                        <li>Works on any platform with Java installed</li>
+                    </ul>
+                    
+                    <a href="peer-to-peer-chat.java" download="peer-to-peer-chat.java" class="btn">⬇️ Download Java Source Code</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section--page">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p>Email: 2326ka30@kgcas.com</p>
+                <p>Phone: +91 93449 76326</p>
+                <p>Location: Coimbatore, India</p>
+            </div>
+        </section>
+
+        <div class="copyright">
+            &copy; 2025 Rishikesh R. All rights reserved.
+        </div>
+    </div>
+    
+    <div id="theme-switcher">
+        <div class="theme" id="theme-light" data-theme="light"></div>
+        <div class="theme" id="theme-dark" data-theme="dark"></div>
+    </div>
+
+    <script>
+        // Theme Switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const themeLight = document.getElementById('theme-light');
+            const themeDark = document.getElementById('theme-dark');
+            
+            // Set initial theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Theme switcher functionality
+            themeLight.addEventListener('click', () => {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            });
+            
+            themeDark.addEventListener('click', () => {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            });
+        });
+    </script>
+</body>
+</html>
